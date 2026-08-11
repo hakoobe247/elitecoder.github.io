@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ismail Fatai · Tech Consultant &amp; Software Developer</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts: Inter + Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+
+    <style>
+        /* ----- ROOT VARIABLES ----- */
+        :root {
+            --primary: #1a2a3a;
+            --primary-light: #2c4056;
+            --accent: #4fc3f7;
+            --accent-dark: #0288d1;
+            --bg-light: #f8fafc;
+            --text-dark: #0b1a2a;
+            --text-muted: #4a5a6e;
+            --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            --border-radius: 1.25rem;
+            --transition: all 0.3s ease;
+        }
+
+        /* ----- GLOBAL ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .display-font {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-dark);
+            transition: var(--transition);
+        }
+        a:hover {
+            color: var(--primary);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .badge-skill {
+            background: rgba(79, 195, 247, 0.12);
+            color: var(--primary-light);
+            font-weight: 500;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            transition: var(--transition);
+        }
+        .badge-skill:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ----- NAVBAR ----- */
+        .navbar-custom {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 2px 24px rgba(0, 0, 0, 0.04);
+            padding: 0.75rem 0;
+            transition: var(--transition);
+        }
+        .navbar-custom .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+        .navbar-custom .navbar-brand span {
+            color: var(--accent-dark);
+        }
+        .navbar-custom .nav-link {
+            font-weight: 500;
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: var(--primary);
+            background: rgba(79, 195, 247, 0.08);
+        }
+
+        /* ----- HERO ----- */
+        .hero {
+            padding: 7rem 0 4rem 0;
+            background: linear-gradient(165deg, #ffffff 0%, #f0f5fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(79, 195, 247, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-dark), #4fc3f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .lead {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 640px;
+        }
+        .hero .badge-intro {
+            background: rgba(79, 195, 247, 0.12);
+            color: var(--primary-light);
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: inline-block;
+            border: 1px solid rgba(79, 195, 247, 0.15);
+        }
+        .hero .btn-primary-custom {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(26, 42, 58, 0.15);
+        }
+        .hero .btn-primary-custom:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(26, 42, 58, 0.2);
+        }
+        .hero .btn-outline-custom {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.75rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .hero .btn-outline-custom:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .hero-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-dark), #4fc3f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            box-shadow: 0 12px 40px rgba(79, 195, 247, 0.25);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ----- ABOUT / SUMMARY ----- */
+        .about-section {
+            padding: 4rem 0;
+        }
+        .about-card {
+            background: #fff;
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2.5rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+        }
+        .about-card:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+        }
+        .about-card .icon-lg {
+            font-size: 2.4rem;
+            color: var(--accent-dark);
+            opacity: 0.7;
+        }
+
+        /* ----- SKILLS ----- */
+        .skills-section {
+            padding: 4rem 0;
+            background: #fff;
+        }
+        .skill-tag {
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 0.45rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin: 0.25rem 0.35rem;
+            border: 1px solid #e9edf2;
+            transition: var(--transition);
+        }
+        .skill-tag:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* ----- EXPERIENCE ----- */
+        .experience-section {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+        .timeline-item {
+            background: #fff;
+            border-radius: var(--border-radius);
+            padding: 2rem 2rem 1.8rem 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--accent);
+            transition: var(--transition);
+            height: 100%;
+        }
+        .timeline-item:hover {
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.07);
+            transform: translateY(-4px);
+        }
+        .timeline-item .company {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        .timeline-item .role {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .timeline-item .date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .timeline-item ul {
+            padding-left: 1.2rem;
+            margin-top: 0.75rem;
+        }
+        .timeline-item ul li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* ----- EDUCATION ----- */
+        .education-section {
+            padding: 4rem 0;
+            background: #fff;
+        }
+        .edu-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 1.8rem 2rem;
+            border: 1px solid #eef2f6;
+            transition: var(--transition);
+            height: 100%;
+        }
+        .edu-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+        }
+        .edu-card .institution {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        .edu-card .degree {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .edu-card .year {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ----- CERTIFICATIONS (extra) ----- */
+        .cert-section {
+            padding: 3rem 0 4rem 0;
+            background: var(--bg-light);
+        }
+
+        /* ----- CONTACT / FOOTER ----- */
+        .footer-section {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 2rem 0;
+        }
+        .footer-section h5 {
+            color: #fff;
+            font-weight: 600;
+        }
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        .footer-section a:hover {
+            color: #fff;
+        }
+        .footer-section .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            margin-right: 0.5rem;
+        }
+        .footer-section .social-link:hover {
+            background: var(--accent-dark);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero .lead {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .about-card {
+                padding: 1.8rem 1.5rem;
+            }
+            .timeline-item {
+                padding: 1.5rem;
+            }
+            .hero-avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 5rem 0 3rem 0;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .btn-group-hero .btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* scroll margin */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Ismail<span>.</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero" class="hero">
+    <div class="container position-relative">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+                <!-- avatar -->
+                <div class="hero-avatar">IF</div>
+
+                <!-- badge -->
+                <div class="badge-intro mb-3">
+                    <i class="fas fa-rocket me-1"></i> Certified Tech Consultant &amp; Software Developer
+                </div>
+
+                <h1 class="mb-3">
+                    Hi there, I'm Ismail <span class="highlight">👋</span><br />
+                    <span style="font-size:0.7em; color: var(--text-muted);">Certified Tech Consultant | Software Developer | Business Information Expert</span>
+                </h1>
+
+                <p class="lead mb-4">
+                    I design, build, and optimize scalable software solutions aligned with strategic enterprise goals.
+                    With specialized credentials in Information Systems, Organizational Management, and Data Governance (GDPR),
+                    I bridge the gap between technical execution, enterprise architecture, and regulatory compliance.
+                </p>
+
+                <!-- core competencies inline -->
+                <div class="d-flex flex-wrap gap-2 mb-4">
+                    <span class="badge-skill"><i class="fas fa-code me-1"></i> Software Dev &amp; Architecture</span>
+                    <span class="badge-skill"><i class="fas fa-chart-line me-1"></i> Tech Consulting &amp; Strategy</span>
+                    <span class="badge-skill"><i class="fas fa-shield-alt me-1"></i> Information Systems &amp; GDPR</span>
+                    <span class="badge-skill"><i class="fas fa-microchip me-1"></i> Process Optimization</span>
+                </div>
+
+                <div class="d-flex flex-wrap gap-3 btn-group-hero">
+                    <a href="#experience" class="btn btn-primary-custom">
+                        <i class="fas fa-briefcase me-2"></i>View Experience
+                    </a>
+                    <a href="#contact" class="btn btn-outline-custom">
+                        <i class="fas fa-paper-plane me-2"></i>Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT / SUMMARY ===== -->
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge-skill mb-3"><i class="fas fa-user-circle me-1"></i> About</span>
+                <h2 class="section-title">Professional Summary</h2>
+                <p class="section-subtitle">
+                    Technology leader with comprehensive expertise in software development, IT infrastructure, and strategic planning.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-6">
+                <div class="about-card h-100">
+                    <div class="icon-lg mb-3"><i class="fas fa-rocket"></i></div>
+                    <h5 class="fw-bold">Innovation &amp; Strategy</h5>
+                    <p class="text-muted mb-0">
+                        Adept at driving innovation, managing large-scale projects, and fostering collaborative environments
+                        that deliver impactful results. Aligns technological initiatives with business goals to ensure flexibility
+                        and reliability.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-card h-100">
+                    <div class="icon-lg mb-3"><i class="fas fa-shield-alt"></i></div>
+                    <h5 class="fw-bold">Security &amp; Governance</h5>
+                    <p class="text-muted mb-0">
+                        Skilled in cybersecurity, cloud computing, and data privacy compliance. Experienced in establishing
+                        robust protocols, mitigating risks, and safeguarding sensitive company information.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-card h-100">
+                    <div class="icon-lg mb-3"><i class="fas fa-users-cog"></i></div>
+                    <h5 class="fw-bold">Leadership &amp; Team Development</h5>
+                    <p class="text-muted mb-0">
+                        Mentors junior staff and implements comprehensive training programs. Cultivates a culture of continuous
+                        learning and skills development across cross-functional teams.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-card h-100">
+                    <div class="icon-lg mb-3"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h5 class="fw-bold">Cloud &amp; Infrastructure</h5>
+                    <p class="text-muted mb-0">
+                        Optimizes cloud infrastructure, streamlines deployment processes, and manages enterprise-level
+                        architecture. Experienced in DevOps implementation and scalable system design.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="skills-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge-skill mb-3"><i class="fas fa-cog me-1"></i> Expertise</span>
+                <h2 class="section-title">Skills &amp; Competencies</h2>
+                <p class="section-subtitle">
+                    A blend of technical, strategic, and managerial capabilities honed over years of delivering enterprise-grade solutions.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+            <div class="col-12">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <span class="skill-tag">IT Management &amp; Delivery</span>
+                    <span class="skill-tag">Operations Management</span>
+                    <span class="skill-tag">Risk Management</span>
+                    <span class="skill-tag">Negotiation</span>
+                    <span class="skill-tag">Data Privacy Compliance</span>
+                    <span class="skill-tag">Information Security</span>
+                    <span class="skill-tag">System Architecture</span>
+                    <span class="skill-tag">Software Architecture</span>
+                    <span class="skill-tag">Technology Roadmapping</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Business Development</span>
+                    <span class="skill-tag">Software Development</span>
+                    <span class="skill-tag">Network Security</span>
+                    <span class="skill-tag">DevOps Implementation</span>
+                    <span class="skill-tag">Cloud Computing</span>
+                    <span class="skill-tag">Cybersecurity</span>
+                    <span class="skill-tag">Agile Methodologies</span>
+                    <span class="skill-tag">RESTful APIs</span>
+                    <span class="skill-tag">JavaScript / Python / Java / Go</span>
+                    <span class="skill-tag">HTML / CSS / PHP</span>
+                    <span class="skill-tag">MySQL / Database Admin</span>
+                    <span class="skill-tag">Git &amp; Version Control</span>
+                    <span class="skill-tag">GDPR Compliance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience" class="experience-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge-skill mb-3"><i class="fas fa-briefcase me-1"></i> Career</span>
+                <h2 class="section-title">Work History</h2>
+                <p class="section-subtitle">
+                    Over a decade of progressive leadership in technology, cloud infrastructure, and software engineering.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <!-- CHIEF TECHNOLOGY OFFICER -->
+            <div class="col-md-6">
+                <div class="timeline-item">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap">
+                        <div>
+                            <div class="role">Chief Technology Officer</div>
+                            <div class="company">Three Bridges Co. · Lagos, Nigeria</div>
+                        </div>
+                        <span class="date"><i class="far fa-calendar-alt me-1"></i>2022 – Current</span>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Launched successful new products via market research &amp; cross-department collaboration.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Aligned IT strategy with organizational goals, fostering technical/non-technical collaboration.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Managed company-level architecture, platform &amp; data configuration processes.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Championed data-driven decision-making with advanced analytics &amp; predictive insights.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Established robust cybersecurity protocols &amp; mentored junior staff.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CLOUD SUPPORT ENGINEER -->
+            <div class="col-md-6">
+                <div class="timeline-item">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap">
+                        <div>
+                            <div class="role">Cloud Support Engineer</div>
+                            <div class="company">PacificSilverline Limited · Lagos</div>
+                        </div>
+                        <span class="date"><i class="far fa-calendar-alt me-1"></i>2020 – Current</span>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Reduced client downtime via proactive monitoring and troubleshooting.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Streamlined deployment processes with automation tools and best practices.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Optimized cloud infrastructure for scalable, high-performance solutions.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Collaborated on seamless cloud migrations with cross-functional teams.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Conducted training sessions for junior team members &amp; new hires.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CYBERSECURITY MANAGER -->
+            <div class="col-md-6">
+                <div class="timeline-item">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap">
+                        <div>
+                            <div class="role">Cybersecurity Manager</div>
+                            <div class="company">Datarockets · Canada</div>
+                        </div>
+                        <span class="date"><i class="far fa-calendar-alt me-1"></i>2019 – 2020</span>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Enhanced network security with MFA and intrusion detection systems.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Reduced risks via regular vulnerability assessments &amp; penetration tests.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Delivered cybersecurity training programs to raise threat awareness.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Conducted forensic investigations &amp; influenced executive decisions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DATABASE ADMINISTRATOR -->
+            <div class="col-md-6">
+                <div class="timeline-item">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap">
+                        <div>
+                            <div class="role">Database Administrator</div>
+                            <div class="company">IT Horizon · Lagos, Nigeria</div>
+                        </div>
+                        <span class="date"><i class="far fa-calendar-alt me-1"></i>2017 – 2018</span>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Streamlined backup/recovery processes for enhanced stability.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Proactively resolved database issues and maintained servers.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Established proactive monitoring to prevent major issues.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Trained junior team members on best practices.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FRONT-END DEVELOPER (moved from PDF) -->
+            <div class="col-md-6">
+                <div class="timeline-item">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap">
+                        <div>
+                            <div class="role">Front-End Developer</div>
+                            <div class="company">Various · Lagos</div>
+                        </div>
+                        <span class="date"><i class="far fa-calendar-alt me-1"></i>2014 – 2017</span>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Built responsive web pages using HTML, CSS, and JavaScript.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Collaborated with UX/UI designers to translate designs into functional apps.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Led front-end development for a major e-commerce platform.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Implemented AJAX for dynamic content and reduced load times.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- JAVA DEVELOPER -->
+            <div class="col-md-6">
+                <div class="timeline-item">
+                    <div class="d-flex justify-content-between align-items-start flex-wrap">
+                        <div>
+                            <div class="role">Java Developer</div>
+                            <div class="company">Dubai, United Arab Emirates</div>
+                        </div>
+                        <span class="date"><i class="far fa-calendar-alt me-1"></i>2012 – 2014</span>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Reviewed code, debugged errors, and enhanced performance.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Developed user-friendly interfaces and scalable architectures.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Reduced bugs via unit testing and QA collaboration.</li>
+                        <li><i class="fas fa-check-circle text-accent me-2" style="color:var(--accent-dark);"></i>Automated build processes to reduce errors and deployment times.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education" class="education-section">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge-skill mb-3"><i class="fas fa-graduation-cap me-1"></i> Learning</span>
+                <h2 class="section-title">Education &amp; Credentials</h2>
+                <p class="section-subtitle">
+                    Formal education, professional certifications, and continuous learning in technology and business.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">National Open University, Lagos</div>
+                    <div class="degree">B.Sc. Entrepreneurship &amp; Business Management</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> 2012</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Alison University, Ireland</div>
+                    <div class="degree">GDPR – Data Governance</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> —</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Alison University, Ireland</div>
+                    <div class="degree">Information Systems &amp; Organization Management</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> —</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Alison University, Ireland</div>
+                    <div class="degree">Digital Network Security</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> —</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Alison University, Ireland</div>
+                    <div class="degree">Project Management PMP</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> —</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Institute of Chartered Accountant of Nigeria</div>
+                    <div class="degree">Accounting &amp; Finance</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> 2012</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Crash Course (Online)</div>
+                    <div class="degree">Masterclass: Web3 &amp; Blockchain Development</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> —</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Crash Course (Online)</div>
+                    <div class="degree">Introduction to MySQL</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> —</div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="edu-card">
+                    <div class="institution">Crash Course (Online)</div>
+                    <div class="degree">Java, PHP, Xamarin, C, JavaScript, Python, Go</div>
+                    <div class="year"><i class="far fa-calendar-alt me-1"></i> —</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT / FOOTER ===== -->
+<section id="contact" class="footer-section">
+    <div class="container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <h5 class="display-font" style="font-size:1.8rem; letter-spacing:-0.02em;">
+                    Let's connect<span style="color:var(--accent);">.</span>
+                </h5>
+                <p class="mb-2" style="max-width:400px;">
+                    I'm always open to discussing technology, consulting, or new opportunities.
+                </p>
+                <div class="d-flex flex-wrap align-items-center gap-3 mt-3">
+                    <a href="mailto:omot4reel2005@yahoo.com" class="text-white text-decoration-none">
+                        <i class="fas fa-envelope me-2"></i>omot4reel2005@yahoo.com
+                    </a>
+                    <span class="text-white-50">|</span>
+                    <a href="tel:+2347049948324" class="text-white text-decoration-none">
+                        <i class="fas fa-phone me-2"></i>+234 704 994 8324
+                    </a>
+                </div>
+                <div class="mt-3">
+                    <span class="text-white-50 me-2"><i class="fas fa-map-pin me-1"></i>Lagos, 100001 Nigeria</span>
+                </div>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <div class="d-flex flex-wrap justify-content-lg-end gap-2">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="mt-3 mb-0 text-white-50 small">
+                    &copy; 2026 Ismail Fatai — Built with <i class="fas fa-heart" style="color:var(--accent);"></i>
+                </p>
+            </div>
+        </div>
+        <hr class="my-4 border-light opacity-25" />
+        <div class="row">
+            <div class="col-12 text-center text-white-50 small">
+                <span class="badge-skill me-2" style="background:rgba(255,255,255,0.06); color:#fff; border-color:rgba(255,255,255,0.1);">
+                    <i class="fas fa-shield-alt me-1"></i> GDPR Compliant
+                </span>
+                <span class="badge-skill me-2" style="background:rgba(255,255,255,0.06); color:#fff; border-color:rgba(255,255,255,0.1);">
+                    <i class="fas fa-cloud me-1"></i> Cloud Architect
+                </span>
+                <span class="badge-skill" style="background:rgba(255,255,255,0.06); color:#fff; border-color:rgba(255,255,255,0.1);">
+                    <i class="fas fa-code me-1"></i> Full-Stack Mindset
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<!-- smooth scroll for nav links (optional) -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // close mobile menu if open
+                const navCollapse = document.getElementById('mainNav');
+                const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+                if (bsCollapse) bsCollapse.hide();
+            }
+        });
+    });
+
+    // active nav link on scroll (simple highlight)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
